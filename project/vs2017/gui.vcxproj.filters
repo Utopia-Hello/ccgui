@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{754f94c5-4ad0-4614-9464-3eceb1cb5e66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4d4ac3eb-70e0-4bea-94b4-544d2599b139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core">
+      <UniqueIdentifier>{9b659b3e-ff20-49f4-90e6-7150f6691c44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\global">
+      <UniqueIdentifier>{205acead-93bd-4cc6-9f9c-397f4c789f22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\input">
+      <UniqueIdentifier>{a2693804-0541-4b5d-b3f2-4a44bd8a69c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tools">
+      <UniqueIdentifier>{093fa7fa-0357-4192-9665-bfdeeb68b569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\widgets">
+      <UniqueIdentifier>{d76914e1-d45d-4054-a792-a77117a5d373}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\platforms">
+      <UniqueIdentifier>{fbee5038-773f-4d09-952d-eddbd9c3c4de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\platforms\windows">
+      <UniqueIdentifier>{0a67ee17-f5ac-43e2-b738-8b5ab5bd9557}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\main.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\core\application.c">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\platforms\windows\application_win.c">
+      <Filter>src\platforms\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\platforms\windows\main_win.c">
+      <Filter>src\platforms\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tools\point.c">
+      <Filter>src\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tools\rect.c">
+      <Filter>src\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\window.c">
+      <Filter>src\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\widget.c">
+      <Filter>src\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\platforms\windows\widget_win.c">
+      <Filter>src\platforms\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\button.c">
+      <Filter>src\widgets</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\core\application.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\global\global.h">
+      <Filter>src\global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools\point.h">
+      <Filter>src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools\rect.h">
+      <Filter>src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\window.h">
+      <Filter>src\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\window_p.h">
+      <Filter>src\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\widget_p.h">
+      <Filter>src\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\widget.h">
+      <Filter>src\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\button.h">
+      <Filter>src\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\button_p.h">
+      <Filter>src\widgets</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
