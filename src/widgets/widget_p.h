@@ -4,16 +4,18 @@
 #include "../global/global.h"
 #include "../tools/rect.h"
 
-typedef struct
+typedef struct _tagWidget _Widget;
+
+struct _tagWidget
 {
-    Rect                rect;
-    Handle              widget_id;
+    Rect            rect;
+    Handle          widget_id;
     //uint32_t            bg_color; // background color
-    struct _Widget*     parent;
-    struct _Widget*     first_child;
-    struct _Widget*     prev_sibling;
-    struct _Widget*     next_sibling;
-}_Widget;
+    _Widget*        parent;
+    _Widget*        first_child;
+    _Widget*        prev_sibling;
+    _Widget*        next_sibling;
+};
 
 
 Handle _WidgetCreate_platform(void);
