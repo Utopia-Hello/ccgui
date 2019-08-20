@@ -1,3 +1,5 @@
 # Project files
 /project/vs2017/.vs
 /project/vs2017/Debug/
+*.ipch
+*.vcxproj.user
