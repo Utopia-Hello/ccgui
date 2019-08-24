@@ -1,19 +1,14 @@
 #include "widget.h"
 #include "widget_p.h"
 
-#include <string.h>
 
-
-#define _WIDGET_DEFAULT_X0      (0)
-#define _WIDGET_DEFAULT_Y0      (0)
-
-#define _WIDGET_DEFAULT_WIDTH   (400)
-#define _WIDGET_DEFAULT_HEIGHT  (300)
+static const Rect s_widget_init_rect = { 200, 200, 600, 500 };
 
 
 #define _WIDGET_NUM_MAX         (1000)
 
 _Widget* s_vectWidgets[_WIDGET_NUM_MAX] = { 0 };
+
 
 
 static int _push(_Widget* pWidget)
@@ -91,7 +86,23 @@ static int _addChild(_Widget* parent, _Widget* child)
     return 0;
 }
 
-void _WidgetOnPaint(Handle wid, Handle painter)
+int _WidgetInit(_Widget* w, _Widget* parent, const Rect* r)
+{
+    memset(w, 0, sizeof(_Widget));
+
+    w->rect = *r;
+    w->parent = parent;
+
+    w->widget_id = _WidgetCreate_platform(w);
+
+    _addChild((_Widget*)parent, w);
+
+    _push(w);
+
+    return 1;
+}
+
+void _WidgetOnPaint(Handle wid, Handle paint_obj)
 {
     _Widget* lp_widget = _find(wid);
     if (!lp_widget)
@@ -99,43 +110,26 @@ void _WidgetOnPaint(Handle wid, Handle painter)
         return;
     }
 
-    for (int i = 0; i < 50; i += 5)
+    lp_widget->paint_obj = paint_obj;
+
+    if (lp_widget->paint_event_f)
     {
-        _WidgetSetPixel_platform(wid, painter, i, 20, 16777215);
-    } 
+        PaintEvent e = NULL;
+        lp_widget->paint_event_f(lp_widget, e);
+    }
 }
 
 Widget WidgetCreate(Widget parent)
 {
     _Widget* lp_widget = malloc(sizeof(_Widget));
+
     if (!lp_widget)
     {
         // assert
         return (Widget*)NULL;
     }
 
-    memset(lp_widget, 0, sizeof(_Widget));
-
-    if (!parent)
-    {
-        lp_widget->rect.x0 = _WIDGET_DEFAULT_X0;
-        lp_widget->rect.y0 = _WIDGET_DEFAULT_Y0;
-        lp_widget->rect.x1 = _WIDGET_DEFAULT_X0 + _WIDGET_DEFAULT_WIDTH;
-        lp_widget->rect.y1 = _WIDGET_DEFAULT_Y0 + _WIDGET_DEFAULT_HEIGHT;
-
-        lp_widget->widget_id = _WidgetCreate_platform(); // desktop create
-    }
-    else
-    {
-        lp_widget->rect.x0 = 100;
-        lp_widget->rect.y0 = 100;
-        lp_widget->rect.x1 = 50;
-        lp_widget->rect.y1 = 30;
-    }
-
-    _addChild((_Widget*)parent, lp_widget);
-
-    _push(lp_widget);
+    _WidgetInit(lp_widget, (_Widget*)parent, &s_widget_init_rect);
 
     return (Widget*)lp_widget;
 }
@@ -143,6 +137,76 @@ Widget WidgetCreate(Widget parent)
 void WidgetShow(Widget w)
 {
     _Widget* lp_widget = (_Widget*)w;
+    _WidgetShow_platform(lp_widget);
+}
 
-    _WidgetShow_platform(lp_widget->widget_id);
+void WidgetSetRegion(Widget w, int32_t x, int32_t y, int32_t width, int32_t height)
+{
+    _Widget* lp_widget = (_Widget*)w;
+    lp_widget->rect.x0 = x;
+    lp_widget->rect.y0 = y;
+    lp_widget->rect.x1 = x + width;
+    lp_widget->rect.y1 = y + height;
+    _WidgetSetRegion_platform(lp_widget);
+}
+
+void WidgetMove(Widget w, int32_t x, int32_t y)
+{
+    _Widget* lp_widget = (_Widget*)w;
+    lp_widget->rect.x1 = x + lp_widget->rect.x1 - lp_widget->rect.x0;
+    lp_widget->rect.y1 = y + lp_widget->rect.y1 - lp_widget->rect.y0;
+    lp_widget->rect.x0 = x;
+    lp_widget->rect.y0 = y;
+    _WidgetSetRegion_platform(lp_widget);
+}
+
+void WidgetSetSize(Widget w, int32_t width, int32_t height)
+{
+    _Widget* lp_widget = (_Widget*)w;
+    lp_widget->rect.x1 = lp_widget->rect.x1 + width;
+    lp_widget->rect.y1 = lp_widget->rect.y1 + height;
+    _WidgetSetRegion_platform(lp_widget);
+}
+
+
+int32_t WidgetGetPosX(Widget w)
+{
+    _Widget* lp_widget = (_Widget*)w;
+    return lp_widget->rect.x0;
+}
+
+int32_t WidgetGetPosY(Widget w)
+{
+    _Widget* lp_widget = (_Widget*)w;
+    return lp_widget->rect.y0;
+}
+
+int32_t WidgetGetWidth(Widget w)
+{
+    _Widget* lp_widget = (_Widget*)w;
+    return lp_widget->rect.x1 - lp_widget->rect.x0;
+}
+
+int32_t WidgetGetHeight(Widget w)
+{
+    _Widget* lp_widget = (_Widget*)w;
+    return lp_widget->rect.y1 - lp_widget->rect.y0;
+}
+
+Handle WidgetGetId(Widget w)
+{
+    _Widget* lp_widget = (_Widget*)w;
+    return lp_widget->widget_id;
+}
+
+Widget WidgetGetParent(Widget w)
+{
+    _Widget* lp_widget = (_Widget*)w;
+    return (Widget)lp_widget->parent;
+}
+
+void WidgetSetPaintEvent(Widget w, PaintEventF f)
+{
+    _Widget* lp_widget = (_Widget*)w;
+    lp_widget->paint_event_f = f;
 }

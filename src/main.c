@@ -1,25 +1,40 @@
 #include <stdio.h>
 
+#include "./core/application.h"
+
 #include "./widgets/widget.h"
 #include "./widgets/window.h"
 #include "./widgets/button.h"
-#include "./core/application.h"
 
+#include "./tools/painter.h"
 
-int main()
+static void _PaintEvent(Widget w, PaintEvent e)
 {
-    Widget w;
-    Button b;
-    //Window w1;
+    Painter painter = PainterCreate(w);
+    int i;
+
+    for (i = 0; i < 200; i += 1)
+    {
+        PainterDrawPoint(painter, i, 20);
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    Widget w = NULL;
+    Button b = NULL;
 
     ApplicationInit();
 
     w = WidgetCreate(NULL);
     b = ButtonCreate(w);
-    //w1 = WindowCreate();
+
+    WidgetSetPaintEvent(w, _PaintEvent);
+
+    WidgetMove(w, 500, 500);
+    WidgetMove(b, 20, 50);
 
     WidgetShow(w);
-    //WindowShow(w1);
 
     return ApplicationRun();
 }

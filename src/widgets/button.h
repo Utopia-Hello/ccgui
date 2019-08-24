@@ -1,7 +1,7 @@
 #ifndef __BUTTON_H__
 #define __BUTTON_H__
 
-#include "../global/global.h"
+#include "../tools/global.h"
 #include "widget.h"
 
 typedef Widget Button;

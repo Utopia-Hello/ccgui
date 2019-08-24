@@ -4,9 +4,10 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
 
-typedef void* Handle;
-
+typedef void*       Handle;
+typedef uint32_t    Color;
 
 
 #endif

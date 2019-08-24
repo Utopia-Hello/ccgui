@@ -1,7 +1,7 @@
 #ifndef __WINDOW_H__
 #define __WINDOW_H__
 
-#include "../global/global.h"
+#include "../tools/global.h"
 
 typedef Handle Window;
 

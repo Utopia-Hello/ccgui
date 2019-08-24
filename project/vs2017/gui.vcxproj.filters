@@ -10,9 +10,6 @@
     <Filter Include="src\core">
       <UniqueIdentifier>{9b659b3e-ff20-49f4-90e6-7150f6691c44}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\global">
-      <UniqueIdentifier>{205acead-93bd-4cc6-9f9c-397f4c789f22}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\input">
       <UniqueIdentifier>{a2693804-0541-4b5d-b3f2-4a44bd8a69c9}</UniqueIdentifier>
     </Filter>
@@ -27,6 +24,9 @@
     </Filter>
     <Filter Include="src\platforms\windows">
       <UniqueIdentifier>{0a67ee17-f5ac-43e2-b738-8b5ab5bd9557}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\events">
+      <UniqueIdentifier>{10a78b39-8abb-4283-9292-a0af8eb202a5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,13 +60,16 @@
     <ClCompile Include="..\..\src\widgets\button.c">
       <Filter>src\widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\events\PaintEvent.c">
+      <Filter>src\events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tools\painter.c">
+      <Filter>src\tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\core\application.h">
       <Filter>src\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\global\global.h">
-      <Filter>src\global</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\tools\point.h">
       <Filter>src\tools</Filter>
@@ -91,6 +94,18 @@
     </ClInclude>
     <ClInclude Include="..\..\src\widgets\button_p.h">
       <Filter>src\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\PaintEvent.h">
+      <Filter>src\events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools\painter.h">
+      <Filter>src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools\painter_p.h">
+      <Filter>src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools\global.h">
+      <Filter>src\tools</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

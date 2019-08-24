@@ -65,10 +65,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\core\application.c" />
+    <ClCompile Include="..\..\src\events\PaintEvent.c" />
     <ClCompile Include="..\..\src\main.c" />
     <ClCompile Include="..\..\src\platforms\windows\application_win.c" />
     <ClCompile Include="..\..\src\platforms\windows\main_win.c" />
     <ClCompile Include="..\..\src\platforms\windows\widget_win.c" />
+    <ClCompile Include="..\..\src\tools\painter.c" />
     <ClCompile Include="..\..\src\tools\point.c" />
     <ClCompile Include="..\..\src\tools\rect.c" />
     <ClCompile Include="..\..\src\widgets\button.c" />
@@ -77,7 +79,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\core\application.h" />
-    <ClInclude Include="..\..\src\global\global.h" />
+    <ClInclude Include="..\..\src\events\PaintEvent.h" />
+    <ClInclude Include="..\..\src\tools\global.h" />
+    <ClInclude Include="..\..\src\tools\painter.h" />
+    <ClInclude Include="..\..\src\tools\painter_p.h" />
     <ClInclude Include="..\..\src\tools\point.h" />
     <ClInclude Include="..\..\src\tools\rect.h" />
     <ClInclude Include="..\..\src\widgets\button.h" />
