@@ -7,8 +7,12 @@
 typedef Handle Painter;
 
 Painter PainterCreate(Widget w);
+void    PainterDelete(Painter p);
 
-void PainterDrawPoint(Painter p, int32_t x, int32_t y);
+void    PainterSetColor(Painter painter, Color color);
+
+
+void PainterDrawPoint(Painter painter, int32_t x, int32_t y);
 
 
 #endif

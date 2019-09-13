@@ -49,6 +49,9 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
+    <Link>
+      <SubSystem>NotSet</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -65,7 +68,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\core\application.c" />
-    <ClCompile Include="..\..\src\events\PaintEvent.c" />
+    <ClCompile Include="..\..\src\events\event.c" />
+    <ClCompile Include="..\..\src\events\mouseevent.c" />
+    <ClCompile Include="..\..\src\events\paintevent.c" />
     <ClCompile Include="..\..\src\main.c" />
     <ClCompile Include="..\..\src\platforms\windows\application_win.c" />
     <ClCompile Include="..\..\src\platforms\windows\main_win.c" />
@@ -79,7 +84,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\core\application.h" />
-    <ClInclude Include="..\..\src\events\PaintEvent.h" />
+    <ClInclude Include="..\..\src\events\event.h" />
+    <ClInclude Include="..\..\src\events\event_p.h" />
+    <ClInclude Include="..\..\src\events\mouseevent.h" />
+    <ClInclude Include="..\..\src\events\mouseevent_p.h" />
+    <ClInclude Include="..\..\src\events\paintevent.h" />
+    <ClInclude Include="..\..\src\events\paintevent_p.h" />
     <ClInclude Include="..\..\src\tools\global.h" />
     <ClInclude Include="..\..\src\tools\painter.h" />
     <ClInclude Include="..\..\src\tools\painter_p.h" />

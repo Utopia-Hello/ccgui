@@ -23,9 +23,26 @@ Painter PainterCreate(Widget w)
     return (Painter)lp_painter;
 }
 
-void PainterDrawPoint(Painter p, int32_t x, int32_t y)
+void PainterDelete(Painter p)
 {
-    _Painter* lp_painter = (_Painter*)p;
+    if (p)
+    {
+        free(p);
+    }
+}
 
-    _WidgetSetPixel_platform(lp_painter->paint_obj, x, y, 0x00aabbcc);
+void PainterSetColor(Painter painter, Color color)
+{
+    _Painter* lp_painter = (_Painter*)painter;
+    if (lp_painter)
+    {
+        lp_painter->color = color;
+    }
+}
+
+void PainterDrawPoint(Painter painter, int32_t x, int32_t y)
+{
+    _Painter* lp_painter = (_Painter*)painter;
+
+    _WidgetSetPixel_platform(lp_painter->paint_obj, x, y, lp_painter->color);
 }

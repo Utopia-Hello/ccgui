@@ -9,6 +9,7 @@ typedef struct _Painter _Painter;
 struct _Painter
 {
     Handle  paint_obj;
+    Color   color;
 };
 
 int     _PainterInit(_Painter* painter, _Widget* w);

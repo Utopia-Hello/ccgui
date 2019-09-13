@@ -8,6 +8,9 @@ typedef Widget Button;
 
 
 Button  ButtonCreate(Widget parent);
+void    ButtonDelete(Button b);
+
+void    ButtonSetBackgroundColor(Button b, Color color);
 
 
 

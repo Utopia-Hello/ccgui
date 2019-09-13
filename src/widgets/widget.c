@@ -1,6 +1,8 @@
 #include "widget.h"
 #include "widget_p.h"
 
+#include "../events/event_p.h"
+
 
 static const Rect s_widget_init_rect = { 200, 200, 600, 500 };
 
@@ -112,10 +114,29 @@ void _WidgetOnPaint(Handle wid, Handle paint_obj)
 
     lp_widget->paint_obj = paint_obj;
 
-    if (lp_widget->paint_event_f)
+    if (lp_widget->event_f)
     {
-        PaintEvent e = NULL;
-        lp_widget->paint_event_f(lp_widget, e);
+        PaintEvent e = PaintEventCreate();
+        _EventSetType(e, EVENT_TYPE_PAINT);
+        lp_widget->event_f(lp_widget, e);
+        PaintEventDelete(e);
+    }
+}
+
+void _WidgetOnMousePress(Handle wid, MouseButton b)
+{
+    _Widget* lp_widget = _find(wid);
+    if (!lp_widget)
+    {
+        return;
+    }
+
+    if (lp_widget->event_f)
+    {
+        MouseEvent e = MouseEventCreate();
+        _EventSetType(e, EVENT_TYPE_MOUSE_PRESS);
+        lp_widget->event_f(lp_widget, e);
+        MouseEventDelete(e);
     }
 }
 
@@ -134,10 +155,24 @@ Widget WidgetCreate(Widget parent)
     return (Widget*)lp_widget;
 }
 
+void WidgetDelete(Widget w)
+{
+    if (w)
+    {
+        free(w);
+    }
+}
+
 void WidgetShow(Widget w)
 {
     _Widget* lp_widget = (_Widget*)w;
     _WidgetShow_platform(lp_widget);
+}
+
+void WidgetUpdate(Widget w)
+{
+    _Widget* lp_widget = (_Widget*)w;
+    _WidgetUpdate_platform(lp_widget);
 }
 
 void WidgetSetRegion(Widget w, int32_t x, int32_t y, int32_t width, int32_t height)
@@ -205,8 +240,8 @@ Widget WidgetGetParent(Widget w)
     return (Widget)lp_widget->parent;
 }
 
-void WidgetSetPaintEvent(Widget w, PaintEventF f)
+void WidgetSetEventF(Widget w, EventF f)
 {
     _Widget* lp_widget = (_Widget*)w;
-    lp_widget->paint_event_f = f;
+    lp_widget->event_f = f;
 }

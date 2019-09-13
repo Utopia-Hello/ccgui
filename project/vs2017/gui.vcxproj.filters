@@ -60,11 +60,17 @@
     <ClCompile Include="..\..\src\widgets\button.c">
       <Filter>src\widgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\events\PaintEvent.c">
-      <Filter>src\events</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\tools\painter.c">
       <Filter>src\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\events\event.c">
+      <Filter>src\events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\events\paintevent.c">
+      <Filter>src\events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\events\mouseevent.c">
+      <Filter>src\events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,9 +101,6 @@
     <ClInclude Include="..\..\src\widgets\button_p.h">
       <Filter>src\widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\events\PaintEvent.h">
-      <Filter>src\events</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\tools\painter.h">
       <Filter>src\tools</Filter>
     </ClInclude>
@@ -106,6 +109,24 @@
     </ClInclude>
     <ClInclude Include="..\..\src\tools\global.h">
       <Filter>src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\event.h">
+      <Filter>src\events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\event_p.h">
+      <Filter>src\events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\paintevent.h">
+      <Filter>src\events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\paintevent_p.h">
+      <Filter>src\events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\mouseevent.h">
+      <Filter>src\events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\mouseevent_p.h">
+      <Filter>src\events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
