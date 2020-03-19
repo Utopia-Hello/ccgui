@@ -1,5 +1,5 @@
 # Project files
-/project/vs2017/.vs
-/project/vs2017/x64/
+/build/vs2017/.vs
+/build/vs2017/x64/
 *.ipch
 *.vcxproj.user
